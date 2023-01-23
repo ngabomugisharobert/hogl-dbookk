@@ -7,7 +7,6 @@ import { paginate } from '../../components/common/paginate';
 import { Button, Form } from 'react-bootstrap';
 import Table from 'react-bootstrap/Table';
 import Pagination from 'react-bootstrap/Pagination';
-import { Skeleton } from 'react-Skeleton-generator';
 import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
@@ -121,9 +120,7 @@ export default class Index extends Component {
                                     <div className="alert alert-info">
                                         There are no Grp_movemets
                                     </div>
-                                    <Skeleton.SkeletonThemeProvider>
-                                        <Skeleton count={4} widthMultiple={['100%', '75%', '50%', '25%']} heightMultiple={['30px', '30px', '30px', '30px']} />
-                                    </Skeleton.SkeletonThemeProvider>
+                                    <h2>Loading ... </h2>
                                 </div>
                             </div>
                         </div>
