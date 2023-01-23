@@ -120,6 +120,7 @@ export default class Index extends Component {
                                     <div className="alert alert-info">
                                         There are no Grp_movemets
                                         <h2>Loading ... </h2>
+                                        </div>
                                 </div>
                             </div>
                         </div>
