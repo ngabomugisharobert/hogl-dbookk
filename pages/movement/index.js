@@ -11,6 +11,7 @@ import Container from 'react-bootstrap/Container';
 import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 import { read, utils, writeFileXLSX } from 'xlsx';
+import axios from 'axios';
 
 export default class Index extends Component {
 
@@ -18,20 +19,23 @@ export default class Index extends Component {
         movements: [],
         pageSize: 10,
         currentPage: 1,
-        sortColumn: { path: "title", order: "asc" },
+        sortColumn: { path: "vistor_name", order: "asc" },
         searchQuery: "",
         load: false,
     };
     getMovements = async () => {
-        const MovementsCollectionRef = collection(db, "tb_movements");
-        const data = await getDocs(MovementsCollectionRef);
-        const movements = data.docs.map((doc) => {
-            return {
-                id: doc.id,
-                ...doc.data(),
-            };
-        });
-        console.log("movements ---------", movements)
+        // use axios to get the movements data from the database
+        const movements = await axios.get("http://localhost:8080/api/movements")
+            .then((res) => {
+                console.log(res.data);
+                return res.data;
+            }
+            )
+            .catch((err) => {
+                console.log(err);
+            }
+            )
+
         return movements;
 
     };
@@ -77,7 +81,7 @@ export default class Index extends Component {
         if (searchQuery) {
             console.log("********", allMovements)
             filteredMovements = allMovements.filter((m) =>
-                m.MovementType.toLowerCase().startsWith(searchQuery.toLowerCase())
+                m.vistor_name.toLowerCase().startsWith(searchQuery.toLowerCase())
             );
         }
 
@@ -192,25 +196,25 @@ export default class Index extends Component {
                                                         <tr key={index}>
                                                             <td>{index + 1}</td>
                                                             <td>
-                                                                {movement.visitor_id}
+                                                                {movement.vistor_name}
                                                             </td>
                                                             <td>
-                                                                {movement.MovementType}
+                                                                {movement.check_in}
                                                             </td>
                                                             <td>
-                                                                {movement.mv_time}
+                                                                {movement.check_out}
                                                             </td>
                                                             <td>
-                                                                {movement.guard_id}
+                                                                {/* {movement.guard_id} */}
                                                             </td>
                                                             <td>
-                                                                {movement.transportType}
+                                                                {/* {movement.transportType} */}
                                                             </td>
                                                             <td>
-                                                                {movement.vehicle_plate}
+                                                                {/* {movement.vehicle_plate} */}
                                                             </td>
                                                             <td>
-                                                                {movement.gate_id}
+                                                                {movement.vistor_name}
                                                             </td>
                                                         </tr>
                                                     ))

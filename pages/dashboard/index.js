@@ -1,12 +1,31 @@
 import React from 'react'
 import { toast } from "react-toastify";
-
+import { useEffect } from 'react';
+import axios from 'axios';
 import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Layout from '../../components/layout';
 
 const Index = () => {
+
+    console.log("*********useEffect**********");
+    useEffect(() => {
+        console.log("*********useEffect**********");
+        // use axios to get the user data from the database
+        axios.get("http://localhost:8080/api/movements")
+            .then((res) => {
+                console.log(res.data);
+            }
+            )
+            .catch((err) => {
+                console.log(err);
+            }
+            )
+
+    }, [])
+
+
     return (
         <>
             <ToastContainer

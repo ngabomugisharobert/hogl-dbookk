@@ -1,14 +1,17 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 import { Form } from "react-bootstrap";
 import { toast } from "react-toastify"; 
 import { db, auth } from '../services/firebase-config';
 import { login, loginWithGoogle } from "../services/AuthService";
-import { getAuth, signInWithEmailAndPassword } from "firebase/auth";
+import { confirmPasswordReset, getAuth, signInWithEmailAndPassword } from "firebase/auth";
 import { signInWithPopup, GoogleAuthProvider, signInWithRedirect } from "firebase/auth";
+
 
 export default function Home() {
 
+
+  
 
   const [username, setUsername] = React.useState("");
   const [password, setPassword] = React.useState("");
