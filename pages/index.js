@@ -32,6 +32,10 @@ export default function Home() {
           const token = credential.accessToken;
           // The signed-in user info.
           const user = result.user;
+
+          //key email into local storage
+          localStorage.setItem("email", user.email);
+          
           console.log(user, "user");
           if (user) {
             toast.success("Login Successful");

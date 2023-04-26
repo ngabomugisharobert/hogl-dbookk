@@ -12,10 +12,13 @@ const firebaseConfig = {
     measurementId: "G-GE5XS4E6M5"
   };
 
+
   
 // make a connection 
 const app = initializeApp(firebaseConfig);
 // import db to your app
 export const db = getFirestore(app);
+
+// export const colle = app.firestore().collection("tb_movements");
 
 export const auth = getAuth(app);
