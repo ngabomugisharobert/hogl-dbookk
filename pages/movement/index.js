@@ -16,10 +16,301 @@ import axios from 'axios';
 import Modal from 'react-bootstrap/Modal';
 import DatePicker from "react-datepicker";
 import "react-datepicker/dist/react-datepicker.css";
+import _ from 'lodash';
+import withAuth from '../../utils/withAuth';
 
-export default class Index extends Component {
+class Index extends Component {
     state = {
-        movements: [],
+        movements: [
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2022-12-18 15:55",
+                "check_in_gate": "0",
+                "check_out": "2022-12-19 09:42",
+                "check_out_gate": "1",
+                "duration": "8",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 2,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2022-12-20 01:40",
+                "check_in_gate": "0",
+                "check_out": "2022-12-20 07:11",
+                "check_out_gate": "1",
+                "duration": "5",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 2,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-02 07:12",
+                "check_in_gate": "1",
+                "check_out": "2023-01-02 17:40",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-03 07:08",
+                "check_in_gate": "1",
+                "check_out": "2023-01-03 17:42",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-04 07:00",
+                "check_in_gate": "1",
+                "check_out": "2023-01-04 17:19",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-05 06:51",
+                "check_in_gate": "1",
+                "check_out": "2023-01-05 17:07",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-07 10:32",
+                "check_in_gate": "0",
+                "check_out": "2023-01-07 16:59",
+                "check_out_gate": "1",
+                "duration": "6",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 2,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-08 08:11",
+                "check_in_gate": "1",
+                "check_out": "2023-01-08 12:06",
+                "check_out_gate": "0",
+                "duration": "3",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 2,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-09 07:10",
+                "check_in_gate": "1",
+                "check_out": "2023-01-09 17:21",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-10 07:17",
+                "check_in_gate": "1",
+                "check_out": "2023-01-10 16:58",
+                "check_out_gate": "1",
+                "duration": "9",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-11 06:55",
+                "check_in_gate": "1",
+                "check_out": "2023-01-11 17:13",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-12 07:22",
+                "check_in_gate": "1",
+                "check_out": "2023-01-12 17:17",
+                "check_out_gate": "1",
+                "duration": "9",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-13 07:01",
+                "check_in_gate": "1",
+                "check_out": "2023-01-13 17:22",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-14 07:09",
+                "check_in_gate": "1",
+                "check_out": "",
+                "check_out_gate": "",
+                "duration": "0",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "",
+                "status": 1,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-16 17:27",
+                "check_in_gate": "1",
+                "check_out": "2023-01-17 07:21",
+                "check_out_gate": "1",
+                "duration": "6",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-17 08:24",
+                "check_in_gate": "1",
+                "check_out": "",
+                "check_out_gate": "",
+                "duration": "0",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "",
+                "status": 1,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-17 10:56",
+                "check_in_gate": "1",
+                "check_out": "2023-01-18 07:22",
+                "check_out_gate": "1",
+                "duration": "13",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-18 16:59",
+                "check_in_gate": "1",
+                "check_out": "2023-01-19 07:17",
+                "check_out_gate": "1",
+                "duration": "7",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-19 17:03",
+                "check_in_gate": "1",
+                "check_out": "2023-01-20 07:20",
+                "check_out_gate": "1",
+                "duration": "6",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "",
+                "check_in_gate": "",
+                "check_out": "2023-01-21 07:27",
+                "check_out_gate": "1",
+                "duration": "0",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "",
+                "status": 1,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-21 17:05",
+                "check_in_gate": "1",
+                "check_out": "2023-01-22 06:50",
+                "check_out_gate": "1",
+                "duration": "6",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-22 17:31",
+                "check_in_gate": "1",
+                "check_out": "2023-01-23 07:10",
+                "check_out_gate": "1",
+                "duration": "6",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-23 16:56",
+                "check_in_gate": "1",
+                "check_out": "2023-01-24 07:15",
+                "check_out_gate": "1",
+                "duration": "7",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-24 16:56",
+                "check_in_gate": "1",
+                "check_out": "2023-01-25 07:23",
+                "check_out_gate": "1",
+                "duration": "7",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            }
+        ],
         user: "",
         pageSize: 10,
         currentPage: 1,
@@ -35,26 +326,316 @@ export default class Index extends Component {
     }
     getMovements = async () => {
         // use axios to get the movements data from the database
-        const movements = await axios.get("http://localhost:8080/api/movements")
-            .then((res) => {
-                console.log(res.data);
-                return res.data;
-            }
-            )
-            .catch((err) => {
-                console.log(err);
-            }
-            )
+        // const movements = await axios.get("http://localhost:8080/api/movements")
+        // .then((res) => {
+        //     console.log(res.data);
+        //     return res.data;
+        // }
+        // )
+        // .catch((err) => {
+        //     console.log(err);
+        // }
+        // )
 
-        return movements;
-
+        // return movements;
+        return [
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2022-12-18 15:55",
+                "check_in_gate": "0",
+                "check_out": "2022-12-19 09:42",
+                "check_out_gate": "1",
+                "duration": "8",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 2,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2022-12-20 01:40",
+                "check_in_gate": "0",
+                "check_out": "2022-12-20 07:11",
+                "check_out_gate": "1",
+                "duration": "5",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 2,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-02 07:12",
+                "check_in_gate": "1",
+                "check_out": "2023-01-02 17:40",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-03 07:08",
+                "check_in_gate": "1",
+                "check_out": "2023-01-03 17:42",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-04 07:00",
+                "check_in_gate": "1",
+                "check_out": "2023-01-04 17:19",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-05 06:51",
+                "check_in_gate": "1",
+                "check_out": "2023-01-05 17:07",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-07 10:32",
+                "check_in_gate": "0",
+                "check_out": "2023-01-07 16:59",
+                "check_out_gate": "1",
+                "duration": "6",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 2,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-08 08:11",
+                "check_in_gate": "1",
+                "check_out": "2023-01-08 12:06",
+                "check_out_gate": "0",
+                "duration": "3",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 2,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-09 07:10",
+                "check_in_gate": "1",
+                "check_out": "2023-01-09 17:21",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-10 07:17",
+                "check_in_gate": "1",
+                "check_out": "2023-01-10 16:58",
+                "check_out_gate": "1",
+                "duration": "9",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-11 06:55",
+                "check_in_gate": "1",
+                "check_out": "2023-01-11 17:13",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-12 07:22",
+                "check_in_gate": "1",
+                "check_out": "2023-01-12 17:17",
+                "check_out_gate": "1",
+                "duration": "9",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-13 07:01",
+                "check_in_gate": "1",
+                "check_out": "2023-01-13 17:22",
+                "check_out_gate": "1",
+                "duration": "10",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "day",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-14 07:09",
+                "check_in_gate": "1",
+                "check_out": "",
+                "check_out_gate": "",
+                "duration": "0",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "",
+                "status": 1,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-16 17:27",
+                "check_in_gate": "1",
+                "check_out": "2023-01-17 07:21",
+                "check_out_gate": "1",
+                "duration": "6",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-17 08:24",
+                "check_in_gate": "1",
+                "check_out": "",
+                "check_out_gate": "",
+                "duration": "0",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "",
+                "status": 1,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-17 10:56",
+                "check_in_gate": "1",
+                "check_out": "2023-01-18 07:22",
+                "check_out_gate": "1",
+                "duration": "13",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-18 16:59",
+                "check_in_gate": "1",
+                "check_out": "2023-01-19 07:17",
+                "check_out_gate": "1",
+                "duration": "7",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-19 17:03",
+                "check_in_gate": "1",
+                "check_out": "2023-01-20 07:20",
+                "check_out_gate": "1",
+                "duration": "6",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "",
+                "check_in_gate": "",
+                "check_out": "2023-01-21 07:27",
+                "check_out_gate": "1",
+                "duration": "0",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "",
+                "status": 1,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-21 17:05",
+                "check_in_gate": "1",
+                "check_out": "2023-01-22 06:50",
+                "check_out_gate": "1",
+                "duration": "6",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-22 17:31",
+                "check_in_gate": "1",
+                "check_out": "2023-01-23 07:10",
+                "check_out_gate": "1",
+                "duration": "6",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-23 16:56",
+                "check_in_gate": "1",
+                "check_out": "2023-01-24 07:15",
+                "check_out_gate": "1",
+                "duration": "7",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            },
+            {
+                "visitor_id": "f9b78a04eed29956-18",
+                "check_in": "2023-01-24 16:56",
+                "check_in_gate": "1",
+                "check_out": "2023-01-25 07:23",
+                "check_out_gate": "1",
+                "duration": "7",
+                "visitor_name": "DUKUZUMUREMYI J de Dieu",
+                "shift": "night",
+                "status": 0,
+                "employee_type": "HOGL employee"
+            }
+        ]
     };
 
     async componentDidMount() {
         // get user email from local storage
         const user = localStorage.getItem("email");
         this.setState({ ...this.state, user: user });
-        const movementsList = (await this.getMovements()) || [];
+        // const movementsList = (await this.getMovements()) || [];
+        const movementsList = this.state.movements;
 
         if (movementsList.length > 0) {
             this.setState({
@@ -173,7 +754,7 @@ export default class Index extends Component {
         }
 
 
-        let sorted = _.orderBy(
+        var sorted = _.orderBy(
             filteredMovements,
             [sortColumn.path],
             [sortColumn.order]
@@ -268,15 +849,20 @@ export default class Index extends Component {
                                 </Form.Group>
 
                                 <Form.Group className="mb-3">
-                                    <Form.label htmlFor="visitors" for="visitors"> Visitors </Form.label>
+                                    {/* <Form.label htmlFor="visitors" for="visitors"> Visitors </Form.label> */}
                                     <Form.Select id="visitors" onChange={event => this.handleSearchType(event.target.value)}>
 
-                                        {data &&
+                                        {/* {data &&
                                             data.map((movement, index) => (
                                                 <option key={index} value={movement.visitor_name}>
                                                     {movement.visitor_name}
                                                 </option>
-                                            ))}
+                                            ))} */}
+                                        {data && [...new Set(data.map(movement => movement.visitor_name))].map((visitorName, index) => (
+                                            <option key={index} value={visitorName}>
+                                                {visitorName}
+                                            </option>
+                                        ))}
                                     </Form.Select>
                                 </Form.Group>
 
@@ -542,3 +1128,5 @@ export default class Index extends Component {
         )
     }
 }
+
+export default withAuth(Index)

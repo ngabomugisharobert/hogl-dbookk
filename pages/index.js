@@ -70,6 +70,7 @@ export default function Home() {
       if (user) {
         setLoading(false);
         toast.success("Login Successful");
+        
         window.location = "/dashboard";
       }
       setLoading(false);

@@ -6,6 +6,7 @@ import { ToastContainer } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
 import Layout from '../../components/layout';
+import withAuth from '../../utils/withAuth';
 
 const Index = () => {
 
@@ -49,4 +50,4 @@ const Index = () => {
     )
 }
 
-export default Index
+export default withAuth(Index);

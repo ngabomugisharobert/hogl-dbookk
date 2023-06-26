@@ -6,6 +6,19 @@ import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 
 function NavScroll({ activeNav }) {
+
+    // function for logging out a user
+    const logout = () => {
+        // remove the token from the local storage
+        localStorage.removeItem('token');
+        localStorage.removeItem('user');
+        localStorage.removeItem('role');
+        localStorage.removeItem('email');
+        // redirect the user to the login page
+        window.location.href = '/';
+    }
+
+
     return (
         <Navbar bg="light" expand="lg" className='border-bottom border-info'>
             <Container fluid>
@@ -23,7 +36,8 @@ function NavScroll({ activeNav }) {
                         <Nav.Link href="/group" active={activeNav === 'groups'}>Groups</Nav.Link>
                         <Nav.Link href="/group-movement" active={activeNav === 'groupMovements'}>GroupMovements</Nav.Link>
                     </Nav>
-                    <Button variant="outline-success">Logout</Button>
+                    {/* add a logout button for logging out a user */}
+                    <Button variant="outline-info" onClick={logout}>Logout</Button>
                 </Navbar.Collapse>
             </Container>
         </Navbar>

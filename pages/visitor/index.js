@@ -12,10 +12,11 @@ import Row from 'react-bootstrap/Row';
 import Col from 'react-bootstrap/Col';
 
 import { read, utils, writeFileXLSX } from 'xlsx';
+import withAuth from '../../utils/withAuth';
 
 
 
-export default class index extends Component {
+class Index extends Component {
     state = {
         visitors: [],
         pageSize: 10,
@@ -223,3 +224,6 @@ export default class index extends Component {
         )
     }
 }
+
+
+export default withAuth(Index)
